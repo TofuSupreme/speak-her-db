@@ -144,7 +144,7 @@ import VariableAlert from '@/components/alerts/VariableAlert.vue';
 
 import { validationMixin } from 'vuelidate';
 import {
-  required, email, minLength, url,
+  required, email, minLength, url, maxLength,
 } from 'vuelidate/lib/validators';
 import japanese from '@/validators/japanese';
 
@@ -152,6 +152,7 @@ const isTrue = (value) => value;
 const touchMap = new WeakMap();
 const VALIDATION_DELAY = 1000;
 const BIO_LENGTH = 30;
+const JOB_TITLE_LENGTH = 100;
 
 export default {
   components: {
@@ -176,6 +177,11 @@ export default {
       email: {
         required,
         email,
+      },
+      job: {
+         title: {
+           maxLength: maxLength(JOB_TITLE_LENGTH),
+         }
       },
       languages: { required },
       speaker_bio: {
@@ -298,6 +304,13 @@ export default {
       if (!this.$v.form.consent.isTrue) { errors.push(this.$t('validations.consentRequired')); }
       return errors;
     },
+    jobTitleErrors() {
+      const errors = [];
+      if (!this.$v.form.job.title.$dirty) { return errors; }
+      // TODO: fix error message
+      if (!this.$v.form.job.title.maxLength) { errors.push(this.$t('validations.consentRequired')); }
+      return errors;
+    }
   },
   mounted() {
     // Prevent enter from submitting the form inside the bio text area
