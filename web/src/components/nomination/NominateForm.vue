@@ -307,8 +307,7 @@ export default {
     jobTitleErrors() {
       const errors = [];
       if (!this.$v.form.job.title.$dirty) { return errors; }
-      // TODO: fix error message
-      if (!this.$v.form.job.title.maxLength) { errors.push(this.$t('validations.consentRequired')); }
+      if (!this.$v.form.job.title.maxLength) { errors.push(this.$t('validations.jobTitleLength', [JOB_TITLE_LENGTH])); }
       return errors;
     }
   },

@@ -123,6 +123,7 @@
         "invalidForm": "Please complete the form correctly",
         "jaNameCharacters": "Please enter your name in full width Kanji \/ Kana",
         "jaNameRequired": "Japanese name is required",
+        "jobTitleLength": "Please keep title under {0} characters",
         "languagesRequired": "Please select spoken languages",
         "messageRequired": "A brief message is required",
         "URLValid": "URL must be valid",
